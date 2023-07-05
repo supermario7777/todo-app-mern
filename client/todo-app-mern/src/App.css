@@ -4,9 +4,10 @@
   align-items: center;
   background-color: white;
   width: 500px;
-  margin-top: 50px auto;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 20px;
+  min-height: 94vh;
+  height: auto;
 }
 
 .App h1{
@@ -17,5 +18,68 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  height: 30px;
+}
+
+.todo-list-tasks{
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 5px;
+  width: 90%;
+  background-color: rgb(214, 213, 212);
+  margin: 10px auto;
+  border-radius: 10px;
+
+}
+
+.todo-task{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding-inline: 10px;
+}
+
+.task{
+  width: 261px;
+  padding: 3px;
+}
+
+.update-form{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.update, .delete, .add, .update-new-btn{
+  background-color: black;
+  border: none;
+  border-radius: 8px;
+  width: 60px;
+  color: white;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.update:hover, .delete:hover, .add:hover, .update-new-btn:hover{
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  width: 60px;
+  color: black;
+  font-family: 'Catamaran', sans-serif;
+}
+
+
+.main-input, .update-new-input{
+  width: 245px;
+  font-family: 'Catamaran', sans-serif;
+  border-radius: 8px;
+  border: 2px solid black;
+  text-indent: 10px;
+}
+
+.main-input::placeholder, .update-new-input::placeholder{
+  color: grey;
 }

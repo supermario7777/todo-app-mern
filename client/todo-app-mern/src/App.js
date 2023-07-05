@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState} from 'react'
 import axios from 'axios'
 import './App.css';
 
@@ -7,7 +7,6 @@ function App() {
   const [tasksList, setTasksList] = useState([])
   const [isUpdating, setIsUpdating] = useState("")
   const [updateTaskText, setUpdateTaskText] = useState("")
-
 
   // add a new task to db
   const addTask = async (e) => {
@@ -49,13 +48,12 @@ function App() {
     }
   }
 
-
-
+  
   // modal window to update the task
   const renderUpdateForm = () => (
     <form className="update-form" onSubmit={(e)=>{updateTask(e)}}>
-      <input className='update-new-input' type="text" placeholder="New Task" onChange={e=>{setUpdateTaskText(e.target.value)}} value={updateTaskText}></input>
-      <button className='update-new-btn' type="submit">Update</button>
+      <input className='update-new-input' type="text" placeholder="please update the task" onChange={e=>{setUpdateTaskText(e.target.value)}} value={updateTaskText}></input>
+      <button className='update-new-btn' type="submit">Save</button>
     </form>
   )
 
@@ -74,10 +72,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>To Do App</h1>
+      <h1>ToDo App</h1>
       <form className="form" onSubmit={e => addTask(e)}>
-        <input type="text" placeholder="please add a new task" onChange={e => { setTaskText(e.target.value) }} value={taskText} ></input>
-        <button type="submit">Add</button>
+        <input type="text" className='main-input' placeholder="please add a new task" onChange={e => { setTaskText(e.target.value) }} value={taskText} ></input>
+        <button type="submit" className='add'>Add</button>
       </form>
       <div className="todo-list-tasks">
         {
@@ -89,7 +87,7 @@ function App() {
                   :
                   <>
                     <p className="task">{item.item}</p>
-                    <button className="update" onClick={() => setIsUpdating(item._id)}>Update</button>
+                    <button className="update" onClick={() => {setIsUpdating(item._id)}}>Update</button>
                     <button className="delete" onClick={() => deleteTask(item._id)}>Delete</button>
                   </>
               }
