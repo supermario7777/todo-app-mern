@@ -2,7 +2,8 @@ POST http://localhost:5050/api/item
 Content-Type: application/json
 
 {
-    "item": "This is the second item"
+    "item": "This is the third item",
+    "status": "todo"
 }
 
 
@@ -14,14 +15,58 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5050/api/item/64a38c99074105427f331a81
+PUT http://localhost:5050/api/item/64a6e6f79abf90f692a8797a
 Content-Type: application/json
 
 {
-    "item": "This is the first updated item"
+    "item": "This is the first updated item",
+    "status": "in-progress"
 }
 
 ###
 
-DELETE  http://localhost:5050/api/item/64a38c99074105427f331a81
+DELETE  http://localhost:5050/api/item/64a6edce53d0bd95bfbcff05
 Content-Type: application/json
+
+
+
+###
+PUT http://localhost:5050/api/item/in-progress/64a6f0191e0e62bd656e7839
+Content-Type: application/json
+
+
+{
+    "item": "the item is updated111",
+    "status": "in-progress" 
+}
+
+
+###
+
+PUT http://localhost:5050/api/item/done/64a6f00c1e0e62bd656e7837
+Content-Type: application/json
+
+
+{
+    "status": "done" 
+}
+
+###
+
+PUT http://localhost:5050/api/item/in-progress/64a6f00c1e0e62bd656e7837
+Content-Type: application/json
+
+
+{
+    "status": "in-progress" 
+}
+
+
+###
+PUT http://localhost:5050/api/item/todo/64a6f0191e0e62bd656e7839
+Content-Type: application/json
+
+
+{
+    "status": "todo" 
+}
