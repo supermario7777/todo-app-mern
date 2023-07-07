@@ -126,7 +126,7 @@ function App() {
       <h2>ToDo App</h2>
       <form className="form" onSubmit={e => addTask(e)}>
         <input type="text" className='main-input' placeholder="please add a new task" onChange={e => { setTaskText(e.target.value) }} value={taskText} ></input>
-        <button type="submit" className='add'>Add</button>
+        <button type="submit" className='add' onClick={()=> setCount(count + 1)}>Add</button>
       </form>
       <div className='statuses'>
         <button style={currentStatus === "todo" ? { color: 'white', background: "black", borderRadius: "2px 0px 0px 0px" } : { color: "black", background: "white", borderBottom: "1px solid black" }} className='filter-by-status-btn' onClick={updateCurrentStatusToToDo}>ToDo</button>
