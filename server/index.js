@@ -6,6 +6,12 @@ const cors = require('cors')
 
 const app = express();
 
+app.use(cors({
+    origin: 'https://todo-app-mern-wkw2.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+}));
+
 app.use(express.json());
 
 
@@ -15,20 +21,20 @@ app.use(cors())
 const TodoItemRoute = require("./routes/todoItems");
 
 mongoose.connect(process.env.DB_CONNECT)
-.then(()=>{
-    console.log("Database connected")
-})
-.catch(err => {
-    console.log(err)
-})
+    .then(() => {
+        console.log("Database connected")
+    })
+    .catch(err => {
+        console.log(err)
+    })
 
 app.use("/", TodoItemRoute);
 
 app.get("/", (req, res) => {
-  res.send("Hello from your Vercel app!");
+    res.send("Hello from your Vercel app!");
 });
 
 
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on ${PORT} PORT`)
 })
