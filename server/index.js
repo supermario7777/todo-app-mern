@@ -14,11 +14,15 @@ app.use(cors(
     }
 ))
 
-app.get(express.json());
+app.use(express.json());
 
 
 const PORT = process.env.PORT || 5050;
 // app.use(cors())
+
+app.get("/", (req, res) => {
+  res.send("Hello from your Vercel app!");
+});
 
 const TodoItemRoute = require("./routes/todoItems");
 
