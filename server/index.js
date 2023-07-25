@@ -14,7 +14,7 @@ app.use(cors(
     }
 ))
 
-app.use(express.json());
+app.get(express.json());
 
 
 const PORT = process.env.PORT || 5050;
