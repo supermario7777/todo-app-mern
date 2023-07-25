@@ -30,7 +30,7 @@ function App() {
   const addTask = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5050/api/item", { item: taskText })
+      const res = await axios.post("https://todo-app-mern-plum.vercel.app/api/item", { item: taskText })
       setTasksList(prev => [...prev, res.data])
       setTaskText("")
     } catch (err) {
@@ -42,8 +42,9 @@ function App() {
   useEffect(() => {
     const getTasksList = async () => {
       try {
-        const res = await axios.get("http://localhost:5050/api/items")
+        const res = await axios.get("https://todo-app-mern-plum.vercel.app/api/items")
         const filteredData = res.data.filter(tasks => tasks.status === currentStatus)
+        // console.log(filteredData)
         setTasksList(filteredData)
       } catch (err) {
         console.log(err)
@@ -57,7 +58,7 @@ function App() {
   const updateTask = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`http://localhost:5050/api/item/${isUpdating}`, { item: updateTaskText })
+      const res = await axios.put(`https://todo-app-mern-plum.vercel.app/api/item/${isUpdating}`, { item: updateTaskText })
       const updatedTaskIndex = tasksList.findIndex(item => item._id === isUpdating)
       const updatedTask = tasksList[updatedTaskIndex].item = updateTaskText
       setUpdateTaskText("")
@@ -79,7 +80,7 @@ function App() {
   // delete task
   const deleteTask = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:5050/api/item/${id}`)
+      const res = await axios.delete(`https://todo-app-mern-plum.vercel.app/api/item/${id}`)
       const newTasksList = tasksList.filter(item => item._id !== id);
       setTasksList(newTasksList)
     } catch (err) {
@@ -93,7 +94,7 @@ function App() {
   // change status to "todo"
   const changeStatusToTodo = async (item) => {
     try {
-      const res = await axios.put(`http://localhost:5050/api/item/todo/${item._id}`, { status: "todo" })
+      const res = await axios.put(`https://todo-app-mern-plum.vercel.app/api/item/todo/${item._id}`, { status: "todo" })
       setCount(count + 1);
     } catch (err) {
       console.log(err)
@@ -103,7 +104,7 @@ function App() {
   // change status to "in-progress"
   const changeStatusToInProgress = async (item) => {
     try {
-      const res = await axios.put(`http://localhost:5050/api/item/in-progress/${item._id}`, { status: "in-progress" })
+      const res = await axios.put(`https://todo-app-mern-plum.vercel.app/api/item/in-progress/${item._id}`, { status: "in-progress" })
       setCount(count + 1);
     } catch (err) {
       console.log(err)
@@ -112,7 +113,7 @@ function App() {
 
   const changeStatusToDone = async (item) => {
     try {
-      const res = await axios.put(`http://localhost:5050/api/item/done/${item._id}`, { status: "done" })
+      const res = await axios.put(`https://todo-app-mern-plum.vercel.app/api/item/done/${item._id}`, { status: "done" })
       setCount(count + 1);
     } catch (err) {
       console.log(err)
@@ -135,8 +136,8 @@ function App() {
       </div>
       <div className="todo-list-tasks">
         {
-          tasksList.map(item => (
-            <div className="todo-task">
+          tasksList.map((item) => (
+            <div className="todo-task" key={item._id}>
               {
                 isUpdating === item._id
                   ? renderUpdateForm()

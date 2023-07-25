@@ -6,6 +6,14 @@ const cors = require('cors')
 
 const app = express();
 
+app.use(cors(
+    {
+        origin: ["https://todo-app-mern-plum.vercel.app/"],
+        methods: ["POST", "GET", "DELETE", "PUT"],
+        credentials: true
+    }
+))
+
 app.use(express.json());
 
 
