@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "client": "cd .. && cd client && cd todo-app-mern && npm start",
-    "dev": "concurrently \"nodemon index.js\" \"npm run client\""
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
