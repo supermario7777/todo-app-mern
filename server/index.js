@@ -6,17 +6,16 @@ const cors = require('cors')
 
 const app = express();
 
-app.use(cors({
-    origin: 'https://todo-app-mern-wkw2.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-}));
-
 app.use(express.json());
 
 
 const PORT = process.env.PORT || 5050;
-app.use(cors())
+
+app.use(cors({
+    origin: ["https://todo-app-mern-wkw2.vercel.app"],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 
 const TodoItemRoute = require("./routes/todoItems");
 
