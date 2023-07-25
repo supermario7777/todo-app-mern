@@ -20,10 +20,6 @@ app.use(express.json());
 const PORT = process.env.PORT || 5050;
 // app.use(cors())
 
-app.get("/", (req, res) => {
-  res.send("Hello from your Vercel app!");
-});
-
 const TodoItemRoute = require("./routes/todoItems");
 
 mongoose.connect(process.env.DB_CONNECT)
@@ -36,7 +32,9 @@ mongoose.connect(process.env.DB_CONNECT)
 
 app.use("/", TodoItemRoute);
 
-
+app.get("/", (req, res) => {
+  res.send("Hello from your Vercel app!");
+});
 
 
 app.listen(PORT, ()=>{
